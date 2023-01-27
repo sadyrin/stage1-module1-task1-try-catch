@@ -18,11 +18,17 @@ public class ParseIntegers {
     public static void main(String[] args) {
         Iterator<String> words = WORDS.iterator();
         int sum = 0;
-        String justWords = "";
+        String justWords = " ";
         while (words.hasNext()) {
             String next = words.next();
-            int number = Integer.parseInt(next);
-            // todo: complete it
+            int number = 0;
+            try{
+                number = Integer.parseInt(next);
+            } catch(NumberFormatException e){
+                String s = e.toString().split("\"")[1].split("\"")[0];
+                justWords += s + " ";
+            }
+            sum += number;
         }
         System.out.println("Sum is " + sum);
         System.out.println("Just words:" + justWords);
